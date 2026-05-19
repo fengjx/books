@@ -43,10 +43,10 @@ fi
 find "$WORKTREE_DIR" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 
 if [[ "$DEST_DIR" == "." || "$DEST_DIR" == "/" ]]; then
-  rsync -a --delete "$SOURCE_PATH"/ "$WORKTREE_DIR"/
+  rsync -a --delete --exclude .DS_Store "$SOURCE_PATH"/ "$WORKTREE_DIR"/
 else
   mkdir -p "$WORKTREE_DIR/$DEST_DIR"
-  rsync -a --delete "$SOURCE_PATH"/ "$WORKTREE_DIR/$DEST_DIR"/
+  rsync -a --delete --exclude .DS_Store "$SOURCE_PATH"/ "$WORKTREE_DIR/$DEST_DIR"/
 fi
 
 touch "$WORKTREE_DIR/.nojekyll"
